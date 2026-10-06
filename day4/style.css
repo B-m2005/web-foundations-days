@@ -1,132 +1,83 @@
-/* ── CSS variables – light theme (default) ── */
 :root {
-  --bg:        #f5f5f5;
-  --surface:   #ffffff;
-  --text:      #1a1a1a;
-  --subtext:   #555555;
-  --border:    #cccccc;
-  --btn-bg:    #2563eb;
-  --btn-text:  #ffffff;
-  --btn2-bg:   #6b7280;
-  --accent:    #2563eb;
+  --bg: #f4f6f8;
+  --card: #ffffff;
+  --text: #222222;
+  --border: #cccccc;
+  --accent: #0ba184;
 }
 
-/* ── Dark theme – only variables change ── */
 body.dark {
-  --bg:        #0f172a;
-  --surface:   #1e293b;
-  --text:      #f1f5f9;
-  --subtext:   #94a3b8;
-  --border:    #334155;
-  --btn-bg:    #3b82f6;
-  --btn-text:  #ffffff;
-  --btn2-bg:   #475569;
-  --accent:    #60a5fa;
+  --bg: #121212;
+  --card: #1e1e1e;
+  --text: #eeeeee;
+  --border: #444444;
+  --accent: #34d3b1;
 }
 
-/* ── Base styles ── */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 
 body {
-  background-color: var(--bg);
+  margin: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: var(--bg);
   color: var(--text);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background-color 0.3s, color 0.3s;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
-.container {
-  background: var(--surface);
-  border: 1px solid var(--border);
+main {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 24px;
+  background: var(--card);
   border-radius: 12px;
-  padding: 2rem;
-  width: 100%;
-  max-width: 560px;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
 }
 
-h1 { font-size: 1.6rem; color: var(--accent); }
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
 label {
-  font-size: 0.95rem;
-  color: var(--subtext);
+  display: block;
+  font-weight: bold;
+  margin-bottom: 6px;
 }
 
-textarea#note-text {
+textarea {
   width: 100%;
-  height: 160px;
-  padding: 0.75rem 1rem;
-  border: 2px solid var(--border);
+  padding: 12px;
+  border: 1px solid var(--border);
   border-radius: 8px;
   background: var(--bg);
   color: var(--text);
-  font-size: 1rem;
-  resize: vertical;
-  outline: none;
-  transition: border-color 0.2s;
+  font: inherit;
 }
 
-textarea#note-text:focus {
-  border-color: var(--accent);
-}
-
-/* ── Counters ── */
 .counters {
   display: flex;
-  gap: 1.5rem;
+  justify-content: space-between;
+  color: #888;
 }
 
-#char-count,
-#word-count {
-  font-size: 0.875rem;
-  color: var(--subtext);
-  transition: color 0.2s;
+.warning {
+  color: #d97706;
 }
 
-/* warning class – approaching limit */
-#char-count.warning {
-  color: orange;
-  font-weight: 600;
-}
-
-/* over class – exceeded limit */
-#char-count.over {
-  color: red;
+.over {
+  color: #b91c1c;
   font-weight: bold;
 }
 
-/* ── Buttons ── */
-.buttons {
-  display: flex;
-  gap: 0.75rem;
-}
-
 button {
-  padding: 0.55rem 1.25rem;
+  background: var(--accent);
+  color: white;
   border: none;
-  border-radius: 7px;
+  padding: 10px 18px;
+  border-radius: 8px;
   cursor: pointer;
-  font-size: 0.9rem;
-  font-weight: 600;
-  transition: opacity 0.2s, transform 0.1s;
-}
-
-button:hover  { opacity: 0.88; }
-button:active { transform: scale(0.97); }
-
-#clear-btn {
-  background: var(--btn-bg);
-  color: var(--btn-text);
-}
-
-#theme-toggle {
-  background: var(--btn2-bg);
-  color: var(--btn-text);
-  margin-left: auto;
 }
