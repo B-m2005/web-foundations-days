@@ -1,30 +1,42 @@
-# Library Books API Design
+# Library API - Books Resource
 
-A simple REST API for managing books in a library.
+Base URL: https://api.citylibrary.org/v1
+All requests and responses use JSON.
 
 ## Endpoints
 
-### 1. List all books
-- **Method:** `GET`
-- **Path:** `/books`
-- **Description:** Returns a list of all books in the library.
-- **Success status code:** `200 OK`
+### List all books
+- GET /books
+- Returns an array of books.
+- Success: 200 OK
 
-### 2. Get one book
-- **Method:** `GET`
-- **Path:** `/books/:id`
-- **Description:** Returns a single book by its ID.
-- **Success status code:** `200 OK`
+### Get one book
+- GET /books/{id}
+- Example: GET /books/15
+- Success: 200 OK
 
-### 3. Create a new book
-- **Method:** `POST`
-- **Path:** `/books`
-- **Description:** Adds a new book to the library.
-- **Example request body:**
-  ```json
-  {
-    "title": "The Hobbit",
-    "author": "J.R.R. Tolkien",
-    "year": 1937,
-    "isbn": "978-0547928227"
-  }
+### Create a book
+- POST /books
+- Body: { "title": "Things Fall Apart", "author": "Chinua Achebe",
+          "year": 1958, "copies": 3 }
+- Success: 201 Created (returns the new book with its id)
+
+### Update a book
+- PATCH /books/{id}
+- Body (only the fields to change): { "copies": 5 }
+- Success: 200 OK
+
+### Delete a book
+- DELETE /books/{id}
+- Success: 204 No Content
+
+### List books by an author
+- GET /books?author=Chinua%20Achebe
+- Uses a query parameter to filter the list.
+- Success: 200 OK
+
+## Errors
+
+- 400 Bad Request - the body is invalid, for example POST /books
+  without a title, or "year" is text instead of a number.
+- 404 Not Found - the book does not exist, for example GET /books/99999.
