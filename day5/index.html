@@ -3,21 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Users List</title>
+    <title>User Directory</title>
     <script src="users.js" defer></script>
   </head>
   <body>
-    <h1>Users from JSONPlaceholder</h1>
+    <h1>User Directory</h1>
+    <button type="button" id="load-users">Load users</button>
 
-    <button id="load-users">Load Users</button>
-
-    <div>
-      <label for="filter-input">Filter by name:</label>
-      <input type="text" id="filter-input" placeholder="Type a name..." />
-    </div>
+    <label for="filter-input">Filter by name</label>
+    <input type="text" id="filter-input" placeholder="e.g. Leanne" />
 
     <p id="status"></p>
-
     <ul id="users-list"></ul>
   </body>
 </html>
